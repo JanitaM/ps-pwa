@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     backgroundColor: primaryColor,
     border: `2px solid ${primaryColor}`,
     fontSize: "1rem",
+    fontWeight: "bold",
     marginTop: "2rem",
     padding: "1rem 2rem",
     width: "100%",

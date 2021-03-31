@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: primaryColor,
     fontSize: "2rem",
+    fontWeight: "bold",
     padding: "10px 0",
     textTransform: "uppercase"
   }

@@ -52,34 +52,19 @@ export default function Login() {
 
       {/* https://material-ui.com/guides/composition/#link */}
       <div className={classes.linkContainer}>
-        <Typography className={classes.links}>
-          <Link
-            // component={RouterLink}
-            component="button"
-            variant="body1"
-            color="#000"
-            underline="none"
-            // onClick={() => {
-            //   console.info("I'm a button.");
-            // }}
-          >
-            Forgot password?
-          </Link>
-        </Typography>
-        <Typography className={classes.links}>
-          <Link
-            // component={RouterLink}
-            component="button"
-            variant="body1"
-            color="#000"
-            underline="none"
-            // onClick={() => {
-            //   console.info("I'm a button.");
-            // }}
-          >
-            Don't have an account? Sign up
-          </Link>
-        </Typography>
+        {["Forgot password?", "Don't have an account? Sign up"].map((route) => (
+          <Typography className={classes.links} key={route}>
+            <Link
+              // component={RouterLink}
+              component="button"
+              variant="body1"
+              underline="none"
+              color="inherit"
+            >
+              {route}
+            </Link>
+          </Typography>
+        ))}
       </div>
     </div>
   );
