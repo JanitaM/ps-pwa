@@ -20,20 +20,19 @@ const useStyles = makeStyles((theme) => ({
     height: "2px",
     width: "100%"
   },
-  linkContainer: { margin: "2rem" },
-  links: { margin: "0.5rem 0" }
+  links: { margin: "2rem" }
 }));
 
-export default function Login() {
+export default function Signup() {
   const classes = useStyles();
-  const [login, setLogin] = useState({ email: "", password: "" });
+  const [signup, setSignup] = useState({});
 
   const handleChange = (e) => {
     e.preventDefault();
-    setLogin({ ...login, [e.target.name]: e.target.value });
+    setSignup({ ...signup, [e.target.name]: e.target.value });
   };
 
-  console.log(login);
+  console.log(signup);
   return (
     <div className={classes.container}>
       <Title />
@@ -41,34 +40,30 @@ export default function Login() {
         type="email"
         text="Email Address"
         name="email"
-        value={login.email}
+        value={signup.email}
         fn={handleChange}
       />
       <Input
         type="password"
         text="Password"
         name="password"
-        value={login.password}
+        value={signup.password}
         fn={handleChange}
       />
       <SolidButton text="Log in" />
 
       {/* https://material-ui.com/guides/composition/#link */}
-      <div className={classes.linkContainer}>
-        {["Forgot password?", "Don't have an account? Sign up"].map((route) => (
-          <Typography className={classes.links} key={route}>
-            <Link
-              // component={RouterLink}
-              component="button"
-              variant="body1"
-              underline="none"
-              color="inherit"
-            >
-              {route}
-            </Link>
-          </Typography>
-        ))}
-      </div>
+      <Typography className={classes.links}>
+        <Link
+          // component={RouterLink}
+          component="button"
+          variant="body1"
+          underline="none"
+          color="inherit"
+        >
+          Already have an account? Log in
+        </Link>
+      </Typography>
     </div>
   );
 }

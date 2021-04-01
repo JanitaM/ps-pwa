@@ -11,12 +11,12 @@ import {
 } from "../components/helpers/styleUtils";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    marginTop: "2rem"
+  container: { marginTop: "2rem" },
+  errorMsg: {
+    color: "#A61003",
+    textAlign: "right"
   },
-  title: {
-    textAlign: "left"
-  }
+  title: { textAlign: "left" }
 }));
 
 const CssTextField = withStyles({
@@ -40,7 +40,7 @@ const CssTextField = withStyles({
   }
 })(TextField);
 
-export default function Input({ type, text, value, fn }) {
+export default function Input({ type, text, name, value, fn }) {
   const classes = useStyles();
 
   return (
@@ -50,7 +50,7 @@ export default function Input({ type, text, value, fn }) {
       </Typography>
       <CssTextField
         type={type}
-        name={text}
+        name={name}
         value={value}
         onChange={fn}
         fullWidth
@@ -61,6 +61,9 @@ export default function Input({ type, text, value, fn }) {
         }}
         variant="outlined"
       />
+      <Typography variant="body1" component="h2" className={classes.errorMsg}>
+        Error here
+      </Typography>
     </div>
   );
 }
