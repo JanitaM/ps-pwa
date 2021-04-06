@@ -4,9 +4,6 @@ import { makeStyles, Typography } from "@material-ui/core";
 import SolidButton from "../components/SolidButton";
 import OutlineButton from "../components/OutlineButton";
 import Title from "../components/Title";
-import Signup from "./Signup";
-import Login from "./Login";
-import Routes from "../components/Routes";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -18,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "50%"
     }
   },
+  links: { textDecoration: "none" },
   title: {
     color: "#038C4C",
     fontSize: "2rem",
@@ -34,13 +32,13 @@ export default function Landing() {
 
   return (
     <div className={classes.container}>
-      <Link to="/signup">
+      <Title />
+      <Link to="/signup" className={classes.links}>
         <SolidButton text="Sign up" />
       </Link>
-      <Link to="/login">
+      <Link to="/login" className={classes.links}>
         <OutlineButton text="Login" />
       </Link>
-
       <Typography
         variant="body2"
         component="h2"

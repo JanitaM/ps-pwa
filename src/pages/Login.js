@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { makeStyles, Typography, Link } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { makeStyles, Typography } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
 import SolidButton from "../components/SolidButton";
@@ -14,8 +15,12 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "50%"
     }
   },
+  links: { textDecoration: "none" },
   linkContainer: { margin: "2rem" },
-  links: { margin: "0.5rem 0" }
+  linkStyle: {
+    margin: "2rem",
+    color: "#000"
+  }
 }));
 
 export default function Login() {
@@ -50,22 +55,17 @@ export default function Login() {
         fn={handleChange}
       />
       <SolidButton text="Login" fn={onSubmit} />
-
-      {/* https://material-ui.com/guides/composition/#link */}
       <div className={classes.linkContainer}>
-        {["Forgot password?", "Don't have an account? Sign up"].map((route) => (
-          <Typography className={classes.links} key={route}>
-            <Link
-              // component={RouterLink}
-              component="button"
-              variant="body1"
-              underline="none"
-              color="inherit"
-            >
-              {route}
-            </Link>
+        <Link to="/resetpassword" className={classes.links}>
+          <Typography className={classes.linkStyle}>
+            Forgot password?
           </Typography>
-        ))}
+        </Link>
+        <Link to="/signup" className={classes.links}>
+          <Typography className={classes.linkStyle}>
+            Don't have an account? Sign up
+          </Typography>
+        </Link>
       </div>
     </form>
   );

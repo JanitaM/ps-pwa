@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { makeStyles, Typography, Link } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { makeStyles, Typography } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
 import SolidButton from "../components/SolidButton";
@@ -20,7 +21,11 @@ const useStyles = makeStyles((theme) => ({
     height: "2px",
     width: "100%"
   },
-  links: { margin: "2rem" }
+  links: { textDecoration: "none" },
+  linkStyle: {
+    margin: "2rem",
+    color: "#000"
+  }
 }));
 
 export default function Signup() {
@@ -51,19 +56,11 @@ export default function Signup() {
         fn={handleChange}
       />
       <SolidButton text="Sign up" />
-
-      {/* https://material-ui.com/guides/composition/#link */}
-      <Typography className={classes.links}>
-        <Link
-          // component={RouterLink}
-          component="button"
-          variant="body1"
-          underline="none"
-          color="inherit"
-        >
+      <Link to="/login" className={classes.links}>
+        <Typography className={classes.linkStyle}>
           Already have an account? Log in
-        </Link>
-      </Typography>
+        </Typography>
+      </Link>
     </div>
   );
 }

@@ -9,8 +9,6 @@ function App() {
   return (
     <main>
       <Routes />
-
-      {/* {user ? <Home /> : <Landing />} */}
     </main>
   );
 }
