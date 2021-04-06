@@ -14,12 +14,6 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "50%"
     }
   },
-  divider: {
-    backgroundColor: "#038C4C",
-    margin: "2rem 0",
-    height: "2px",
-    width: "100%"
-  },
   linkContainer: { margin: "2rem" },
   links: { margin: "0.5rem 0" }
 }));
@@ -33,9 +27,13 @@ export default function Login() {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("login clicked");
+  };
   console.log(login);
   return (
-    <div className={classes.container}>
+    <form className={classes.container}>
       <Title />
       <Input
         type="email"
@@ -51,7 +49,7 @@ export default function Login() {
         value={login.password}
         fn={handleChange}
       />
-      <SolidButton text="Log in" />
+      <SolidButton text="Login" fn={onSubmit} />
 
       {/* https://material-ui.com/guides/composition/#link */}
       <div className={classes.linkContainer}>
@@ -69,6 +67,6 @@ export default function Login() {
           </Typography>
         ))}
       </div>
-    </div>
+    </form>
   );
 }

@@ -50,7 +50,7 @@ export default function Signup() {
         value={signup.password}
         fn={handleChange}
       />
-      <SolidButton text="Log in" />
+      <SolidButton text="Sign up" />
 
       {/* https://material-ui.com/guides/composition/#link */}
       <Typography className={classes.links}>

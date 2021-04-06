@@ -57,7 +57,7 @@ export default function Input({ type, text, name, value, fn }) {
         required
         focused
         inputProps={{
-          "aria-label": { text }
+          "aria-label": `${text}`
         }}
         variant="outlined"
       />
