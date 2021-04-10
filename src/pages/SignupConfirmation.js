@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles, Typography } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
@@ -24,12 +25,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignupConfirmation() {
+  let history = useHistory();
   const classes = useStyles();
   const [code, setCode] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
     setCode(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("signupconfirmation clicked");
+
+    history.push("/");
   };
 
   console.log(code);
@@ -51,7 +60,7 @@ export default function SignupConfirmation() {
         value={code}
         fn={handleChange}
       />
-      <SolidButton text="Confirm" />
+      <SolidButton text="Confirm" fn={handleSubmit} />
     </div>
   );
 }

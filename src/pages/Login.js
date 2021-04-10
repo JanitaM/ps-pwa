@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { makeStyles, Typography } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
+  let history = useHistory();
   const classes = useStyles();
   const [login, setLogin] = useState({ email: "", password: "" });
 
@@ -32,10 +33,13 @@ export default function Login() {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("login clicked");
+
+    history.push("/");
   };
+
   console.log(login);
   return (
     <form className={classes.container}>
@@ -54,7 +58,7 @@ export default function Login() {
         value={login.password}
         fn={handleChange}
       />
-      <SolidButton text="Login" fn={onSubmit} />
+      <SolidButton text="Login" fn={handleSubmit} />
       <div className={classes.linkContainer}>
         <Link to="/resetpassword" className={classes.links}>
           <Typography className={classes.linkStyle}>

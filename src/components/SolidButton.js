@@ -22,6 +22,7 @@ const useStyles = makeStyles({
 
 export default function SolidButton({ text, fn }) {
   const classes = useStyles();
+
   return (
     <Button className={classes.btn} onClick={fn}>
       {text}

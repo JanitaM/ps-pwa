@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { makeStyles, Typography } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
@@ -29,12 +29,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Signup() {
+  let history = useHistory();
   const classes = useStyles();
   const [signup, setSignup] = useState({});
 
   const handleChange = (e) => {
     e.preventDefault();
     setSignup({ ...signup, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("signup clicked");
+
+    history.push("/signupconfirmation");
   };
 
   console.log(signup);
@@ -55,7 +63,7 @@ export default function Signup() {
         value={signup.password}
         fn={handleChange}
       />
-      <SolidButton text="Sign up" />
+      <SolidButton text="Sign up" fn={handleSubmit} />
       <Link to="/login" className={classes.links}>
         <Typography className={classes.linkStyle}>
           Already have an account? Log in
