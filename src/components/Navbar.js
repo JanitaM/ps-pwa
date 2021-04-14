@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
-import UserMobileNavBar from "./UserMobileNavbar";
+import MobileNavBar from "./MobileNavbar";
 import Title from "./Title";
 import { primaryColor } from "./helpers/styleUtils";
 
@@ -48,7 +48,7 @@ function HideOnScroll({ children, window }) {
   );
 }
 
-const Navbar = ({ props, signedInUser, signOut }) => {
+const Navbar = ({ props, signedIn, signOut }) => {
   const classes = useStyles();
   const [profilePic, setProfilePic] = useState([]);
 
@@ -102,10 +102,10 @@ const Navbar = ({ props, signedInUser, signOut }) => {
         }}
         onClose={handleDrawerClose}
       >
-        <UserMobileNavBar
+        <MobileNavBar
           profilePic={profilePic}
           signOut={signOut}
-          signedInUser={signedInUser}
+          // signedInUser={signedInUser}
         />
       </Drawer>
     </Menu>

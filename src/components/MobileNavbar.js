@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Avatar, makeStyles, List, ListItem } from "@material-ui/core";
+import { makeStyles, List, ListItem } from "@material-ui/core";
 import Title from "./Title";
 import SolidButton from "./SolidButton";
 import OutlineButton from "./OutlineButton";
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const UserMobileNavbar = ({ signedInUser, signOut, profilePic }) => {
+const MobileNavbar = ({ signOut }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -51,32 +51,21 @@ const UserMobileNavbar = ({ signedInUser, signOut, profilePic }) => {
       <ListItem className={classes.item}>
         <OutlineButton text="Edit Items" />
       </ListItem>
-      <ListItem className={classes.item}>
-        <OutlineButton text="Account Settings" />
-      </ListItem>
-      {/* <ListItem
+      <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
+          justifyContent: "space-evenly"
         }}
       >
-        <Avatar
-          src={
-            signedInUser && profilePic.length > 0
-              ? profilePic
-              : "https://pagehardware.files.wordpress.com/2018/07/popsicle.jpg"
-          }
-          alt="user profile picture"
-          className={classes.image}
-          variant="rounded"
-        />
-      </ListItem> */}
-      <ListItem>
-        <SolidButton text="Sign out" />
-      </ListItem>
+        <ListItem className={classes.item}>
+          <OutlineButton text="Account Settings" />
+        </ListItem>
+        <ListItem>
+          <SolidButton text="Sign out" />
+        </ListItem>
+      </div>
     </List>
   );
 };
 
-export default UserMobileNavbar;
+export default MobileNavbar;
