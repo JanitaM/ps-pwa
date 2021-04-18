@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const MobileNavbar = ({ signOut }) => {
+export default function TopMenu({ signOut }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -43,29 +43,14 @@ const MobileNavbar = ({ signOut }) => {
   return (
     <List onClick={handleDrawerClose}>
       <ListItem className={classes.item}>
-        <Title />
+        <Title fontSize="2rem" />
       </ListItem>
       <ListItem className={classes.item}>
-        <OutlineButton text="Add Items" />
+        <OutlineButton text="Account" />
       </ListItem>
-      <ListItem className={classes.item}>
-        <OutlineButton text="Edit Items" />
+      <ListItem>
+        <SolidButton text="Sign out" />
       </ListItem>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly"
-        }}
-      >
-        <ListItem className={classes.item}>
-          <OutlineButton text="Account Settings" />
-        </ListItem>
-        <ListItem>
-          <SolidButton text="Sign out" />
-        </ListItem>
-      </div>
     </List>
   );
-};
-
-export default MobileNavbar;
+}

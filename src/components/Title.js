@@ -5,18 +5,23 @@ import { primaryColor } from "../components/helpers/styleUtils";
 const useStyles = makeStyles((theme) => ({
   title: {
     color: primaryColor,
-    fontSize: "2rem",
+    fontSize: "1.75rem",
     fontWeight: "bold",
     padding: "10px 0",
     textTransform: "uppercase"
   }
 }));
 
-export default function Landing() {
+export default function Landing({ fontSize }) {
   const classes = useStyles();
 
   return (
-    <Typography variant="body1" component="h1" className={classes.title}>
+    <Typography
+      variant="body1"
+      component="h1"
+      className={classes.title}
+      style={{ fontSize: fontSize }}
+    >
       Popsicle Sticks
     </Typography>
   );

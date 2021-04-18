@@ -1,14 +1,14 @@
 import React from "react";
+import BottomNavbar from "../components/BottomNavbar";
 import Navbar from "../components/Navbar";
 
-const Home = () => {
+export default function Home() {
   console.log("Home");
   return (
     <>
       <Navbar />
       <div>Home</div>
+      <BottomNavbar />
     </>
   );
-};
-
-export default Home;
+}

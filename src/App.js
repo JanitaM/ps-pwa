@@ -3,7 +3,7 @@ import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Routes from "./components/Routes";
 
-function App() {
+export default function App() {
   const user = false;
 
   return (
@@ -12,5 +12,3 @@ function App() {
     </main>
   );
 }
-
-export default App;
