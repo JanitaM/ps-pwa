@@ -67,7 +67,8 @@ export default function Login() {
         </Link>
         <Link to="/signup" className={classes.links}>
           <Typography className={classes.linkStyle}>
-            Don't have an account? Sign up
+            <div style={{ display: "block" }}>Don't have an account?</div>
+            Sign up
           </Typography>
         </Link>
       </div>
