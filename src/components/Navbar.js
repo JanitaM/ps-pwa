@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import {
-  makeStyles,
   AppBar,
   Drawer,
-  Toolbar,
-  useScrollTrigger,
-  Slide,
   IconButton,
-  Menu
+  makeStyles,
+  Menu,
+  Slide,
+  Toolbar,
+  useScrollTrigger
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import clsx from "clsx";
@@ -50,7 +50,6 @@ function HideOnScroll({ children, window }) {
 
 export default function Navbar({ props, signedIn, signOut }) {
   const classes = useStyles();
-  const [profilePic, setProfilePic] = useState([]);
 
   // useEffect(() => {
   //   async function getPhotos() {
@@ -77,12 +76,12 @@ export default function Navbar({ props, signedIn, signOut }) {
     setOpen(false);
   };
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  // const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const isMenuOpen = Boolean(anchorEl);
+  // const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const renderMobileMenu = (
+  const renderMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -103,7 +102,6 @@ export default function Navbar({ props, signedIn, signOut }) {
         onClose={handleDrawerClose}
       >
         <TopMenu
-          profilePic={profilePic}
           signOut={signOut}
           // signedInUser={signedInUser}
         />
@@ -130,7 +128,7 @@ export default function Navbar({ props, signedIn, signOut }) {
               </IconButton>
             </Toolbar>
           </AppBar>
-          {renderMobileMenu}
+          {renderMenu}
         </div>
       </HideOnScroll>
       <Toolbar />
