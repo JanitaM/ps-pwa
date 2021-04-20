@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { makeStyles, Typography } from "@material-ui/core";
+import useInputState from "../components/helpers/hooks/useInputState";
 import Title from "../components/Title";
 import Input from "../components/Input";
 import SolidButton from "../components/SolidButton";
@@ -26,21 +27,23 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   let history = useHistory();
   const classes = useStyles();
-  const [login, setLogin] = useState({ email: "", password: "" });
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setLogin({ ...login, [e.target.name]: e.target.value });
-  };
+  const [login, setLogin, resetLogin] = useInputState({
+    email: "",
+    password: ""
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("login clicked");
+    // validation
+    resetLogin({
+      email: "",
+      password: ""
+    });
 
     history.push("/");
+    console.log(login);
   };
 
-  console.log(login);
   return (
     <form className={classes.container}>
       <Title />
@@ -49,14 +52,14 @@ export default function Login() {
         text="Email Address"
         name="email"
         value={login.email}
-        fn={handleChange}
+        fn={setLogin}
       />
       <Input
         type="password"
         text="Password"
         name="password"
         value={login.password}
-        fn={handleChange}
+        fn={setLogin}
       />
       <SolidButton text="Login" fn={handleSubmit} />
       <div className={classes.linkContainer}>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import useInputState from "../components/helpers/hooks/useInputState";
 import { makeStyles, Typography } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
@@ -31,21 +32,23 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup() {
   let history = useHistory();
   const classes = useStyles();
-  const [signup, setSignup] = useState({});
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSignup({ ...signup, [e.target.name]: e.target.value });
-  };
+  const [signup, setSignup, resetSignup] = useInputState({
+    email: "",
+    password: ""
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("signup clicked");
+    // validation
+    resetSignup({
+      email: "",
+      password: ""
+    });
 
     history.push("/signupconfirmation");
+    console.log(signup);
   };
 
-  console.log(signup);
   return (
     <div className={classes.container}>
       <Title />
@@ -54,14 +57,14 @@ export default function Signup() {
         text="Email Address"
         name="email"
         value={signup.email}
-        fn={handleChange}
+        fn={setSignup}
       />
       <Input
         type="password"
         text="Password"
         name="password"
         value={signup.password}
-        fn={handleChange}
+        fn={setSignup}
       />
       <SolidButton text="Sign up" fn={handleSubmit} />
       <Link to="/login" className={classes.links}>

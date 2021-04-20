@@ -5,6 +5,7 @@ import Signup from "../pages/Signup";
 import Landing from "../pages/Landing";
 import Home from "../pages/Home";
 import ResetPassword1 from "../pages/ResetPassword1";
+import ResetPassword2 from "../pages/ResetPassword2";
 import SignupConfirmation from "../pages/SignupConfirmation";
 
 export default function Routes() {
@@ -16,6 +17,8 @@ export default function Routes() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/ps-pwa" component={Landing} />
         <Route exact path="/resetpassword" component={ResetPassword1} />
+        <Route exact path="/resetpassword2" component={ResetPassword2} />
+
         <Route
           exact
           path="/signupconfirmation"

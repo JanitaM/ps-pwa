@@ -61,9 +61,9 @@ export default function BottomNavbar() {
   };
 
   const renderCorrectMenu = () => {
-    if (addBtn) return <AddItem />;
-    if (editBtn) return <EditItem />;
-    if (filterBtn) return <FilterMenu />;
+    if (addBtn) return <AddItem handleDrawerClose={handleDrawerClose} />;
+    if (editBtn) return <EditItem handleDrawerClose={handleDrawerClose} />;
+    if (filterBtn) return <FilterMenu handleDrawerClose={handleDrawerClose} />;
   };
 
   const renderMenu = (
@@ -74,7 +74,7 @@ export default function BottomNavbar() {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "center" }}
       open={isMenuOpen}
-      onClick={handleDrawerClose}
+      // onClick={handleDrawerClose}
       aria-label="open drawer"
     >
       <Drawer

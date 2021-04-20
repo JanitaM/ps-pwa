@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { useHistory } from "react-router-dom";
+import useInputState from "../components/helpers/hooks/useInputState";
 import { makeStyles } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
@@ -27,21 +28,19 @@ const useStyles = makeStyles((theme) => ({
 export default function ResetPassword1() {
   let history = useHistory();
   const classes = useStyles();
-  const [email, setEmail] = useState("");
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
+  const [email, setEmail, resetEmail] = useInputState({
+    email: ""
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("login clicked");
+    // validation
+    resetEmail({ email: "" });
 
-    history.push("/login");
+    history.push("/resetpassword2");
+    console.log(email);
   };
 
-  console.log(email);
   return (
     <div className={classes.container}>
       <Title />
@@ -49,8 +48,8 @@ export default function ResetPassword1() {
         type="email"
         text="Email Address"
         name="email"
-        value={email}
-        fn={handleChange}
+        value={email.email}
+        fn={setEmail}
       />
       <SolidButton text="Send Reset Code" fn={handleSubmit} />
     </div>

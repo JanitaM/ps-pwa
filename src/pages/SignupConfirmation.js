@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
+import useInputState from "../components/helpers/hooks/useInputState";
 import { makeStyles, Typography } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
@@ -27,21 +28,20 @@ const useStyles = makeStyles((theme) => ({
 export default function SignupConfirmation() {
   let history = useHistory();
   const classes = useStyles();
-  const [code, setCode] = useState("");
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setCode(e.target.value);
-  };
+  const [code, setCode, resetCode] = useInputState({
+    code: ""
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("signupconfirmation clicked");
+    // validation
+    resetCode({ code: "" });
 
     history.push("/");
+    console.log(code);
   };
 
-  console.log(code);
   return (
     <div className={classes.container}>
       <Title />
@@ -56,9 +56,9 @@ export default function SignupConfirmation() {
       <Input
         type="text"
         text="Confirmation Code"
-        name="Confirmation Code"
-        value={code}
-        fn={handleChange}
+        name="code"
+        value={code.code}
+        fn={setCode}
       />
       <SolidButton text="Confirm" fn={handleSubmit} />
     </div>

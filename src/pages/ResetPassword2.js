@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
+import useInputState from "../components/helpers/hooks/useInputState";
 import { makeStyles } from "@material-ui/core";
 import Title from "../components/Title";
 import Input from "../components/Input";
@@ -25,18 +27,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ResetPassword2() {
   const classes = useStyles();
-  const [resetValues, setResetValues] = useState({
+  let history = useHistory();
+
+  const [values, setValues, resetValues] = useInputState({
     email: "",
     code: "",
     password: ""
   });
 
-  const handleChange = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setResetValues({ ...resetValues, [e.target.name]: e.target.value });
+    // validation
+    resetValues({
+      email: "",
+      code: "",
+      password: ""
+    });
+
+    history.push("/login");
+    console.log(values);
   };
 
-  console.log(resetValues);
   return (
     <div className={classes.container}>
       <Title />
@@ -44,24 +55,24 @@ export default function ResetPassword2() {
         type="email"
         text="Email Address"
         name="email"
-        value={resetValues.email}
-        fn={handleChange}
+        value={values.email}
+        fn={setValues}
       />
       <Input
         type="code"
         text="Reset Code"
         name="code"
-        value={resetValues.code}
-        fn={handleChange}
+        value={values.code}
+        fn={setValues}
       />
       <Input
         type="password"
         text="New Password"
         name="password"
-        value={resetValues.password}
-        fn={handleChange}
+        value={values.password}
+        fn={setValues}
       />
-      <SolidButton text="Reset Password" />
+      <SolidButton text="Reset Password" fn={handleSubmit} />
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import { makeStyles, List, ListItem } from "@material-ui/core";
-import Title from "./Title";
+import Input from "./Input";
 import SolidButton from "./SolidButton";
-import OutlineButton from "./OutlineButton";
+import useInputState from "./helpers/hooks/useInputState";
 
 const useStyles = makeStyles((theme) => ({
   item: { display: "flex", justifyContent: "center", alignItems: "center" },
@@ -25,28 +24,46 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddItem({ signOut }) {
+export default function AddItem({ handleDrawerClose }) {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const [item, setItem, resetItem] = useInputState({
+    title: "",
+    description: ""
+  });
 
   const handleOnClick = (e) => {
     e.preventDefault();
+    resetItem({
+      title: "",
+      description: ""
+    });
 
-    signOut();
-    // navigate("/");
+    handleDrawerClose();
+    console.log(item);
   };
 
   return (
-    <List onClick={handleDrawerClose}>
+    <List>
       <ListItem className={classes.item}>
-        <OutlineButton text="Add Item" />
+        <Input
+          type="text"
+          text="Title"
+          name="title"
+          value={item.title}
+          fn={setItem}
+        />
+      </ListItem>
+      <ListItem className={classes.item}>
+        <Input
+          type="text"
+          text="Description"
+          name="description"
+          value={item.description}
+          fn={setItem}
+        />
       </ListItem>
       <ListItem>
-        <SolidButton text="Save" />
+        <SolidButton text="Save" fn={handleOnClick} />
       </ListItem>
     </List>
   );

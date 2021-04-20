@@ -25,28 +25,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function EditItem({ signOut }) {
+export default function EditItem({ handleDrawerClose }) {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   const handleOnClick = (e) => {
     e.preventDefault();
-
-    signOut();
-    // navigate("/");
+    handleDrawerClose();
   };
 
   return (
-    <List onClick={handleDrawerClose}>
+    <List>
       <ListItem className={classes.item}>
         <OutlineButton text="Display items" />
       </ListItem>
       <ListItem>
-        <SolidButton text="Save" />
+        <SolidButton text="Save" fn={handleOnClick} />
       </ListItem>
     </List>
   );

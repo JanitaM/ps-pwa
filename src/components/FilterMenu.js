@@ -25,28 +25,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function FilterMenu({ signOut }) {
+export default function FilterMenu({ handleDrawerClose }) {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   const handleOnClick = (e) => {
     e.preventDefault();
-
-    signOut();
-    // navigate("/");
+    handleDrawerClose();
   };
 
   return (
-    <List onClick={handleDrawerClose}>
+    <List>
       <ListItem className={classes.item}>
         <OutlineButton text="Filter Options" />
       </ListItem>
       <ListItem>
-        <SolidButton text="Save" />
+        <SolidButton text="Save" fn={handleOnClick} />
       </ListItem>
     </List>
   );
