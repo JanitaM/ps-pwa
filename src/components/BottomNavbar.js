@@ -13,9 +13,9 @@ import EditIcon from "@material-ui/icons/Edit";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { primaryColor } from "./helpers/styleUtils";
-import AddItem from "./AddItem";
-import EditItem from "./EditItem";
-import FilterMenu from "./FilterMenu";
+import AddItem from "../pages/AddItem";
+import EditItem from "../pages/EditItem";
+import FilterMenu from "../pages/FilterMenu";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

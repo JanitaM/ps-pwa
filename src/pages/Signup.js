@@ -40,17 +40,14 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // validation
-    resetSignup({
-      email: "",
-      password: ""
-    });
+    resetSignup();
 
     history.push("/signupconfirmation");
     console.log(signup);
   };
 
   return (
-    <div className={classes.container}>
+    <form className={classes.container}>
       <Title />
       <Input
         type="email"
@@ -72,6 +69,6 @@ export default function Signup() {
           Already have an account? Log in
         </Typography>
       </Link>
-    </div>
+    </form>
   );
 }

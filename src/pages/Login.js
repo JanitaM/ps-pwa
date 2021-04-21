@@ -35,13 +35,9 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // validation
-    resetLogin({
-      email: "",
-      password: ""
-    });
+    resetLogin();
 
     history.push("/");
-    console.log(login);
   };
 
   return (

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { makeStyles, List, ListItem } from "@material-ui/core";
-import Title from "./Title";
-import SolidButton from "./SolidButton";
-import OutlineButton from "./OutlineButton";
+import SolidButton from "../components/SolidButton";
+import OutlineButton from "../components/OutlineButton";
 
 const useStyles = makeStyles((theme) => ({
   item: { display: "flex", justifyContent: "center", alignItems: "center" },

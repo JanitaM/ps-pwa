@@ -38,18 +38,14 @@ export default function ResetPassword2() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // validation
-    resetValues({
-      email: "",
-      code: "",
-      password: ""
-    });
+    resetValues();
 
     history.push("/login");
     console.log(values);
   };
 
   return (
-    <div className={classes.container}>
+    <form className={classes.container}>
       <Title />
       <Input
         type="email"
@@ -73,6 +69,6 @@ export default function ResetPassword2() {
         fn={setValues}
       />
       <SolidButton text="Reset Password" fn={handleSubmit} />
-    </div>
+    </form>
   );
 }

@@ -36,14 +36,14 @@ export default function SignupConfirmation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // validation
-    resetCode({ code: "" });
+    resetCode();
 
     history.push("/");
     console.log(code);
   };
 
   return (
-    <div className={classes.container}>
+    <form className={classes.container}>
       <Title />
       <Typography
         className={classes.links}
@@ -61,6 +61,6 @@ export default function SignupConfirmation() {
         fn={setCode}
       />
       <SolidButton text="Confirm" fn={handleSubmit} />
-    </div>
+    </form>
   );
 }

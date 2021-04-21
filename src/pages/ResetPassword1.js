@@ -28,21 +28,19 @@ const useStyles = makeStyles((theme) => ({
 export default function ResetPassword1() {
   let history = useHistory();
   const classes = useStyles();
-  const [email, setEmail, resetEmail] = useInputState({
-    email: ""
-  });
+  const [email, setEmail, resetEmail] = useInputState({ email: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // validation
-    resetEmail({ email: "" });
+    resetEmail();
 
     history.push("/resetpassword2");
     console.log(email);
   };
 
   return (
-    <div className={classes.container}>
+    <form className={classes.container}>
       <Title />
       <Input
         type="email"
@@ -52,6 +50,6 @@ export default function ResetPassword1() {
         fn={setEmail}
       />
       <SolidButton text="Send Reset Code" fn={handleSubmit} />
-    </div>
+    </form>
   );
 }
