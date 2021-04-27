@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/ps-pwa/static/css/main.8bdbd7c0.chunk.css",
-    "main.js": "/ps-pwa/static/js/main.e2b19c70.chunk.js",
-    "main.js.map": "/ps-pwa/static/js/main.e2b19c70.chunk.js.map",
+    "main.js": "/ps-pwa/static/js/main.b9e4b8a1.chunk.js",
+    "main.js.map": "/ps-pwa/static/js/main.b9e4b8a1.chunk.js.map",
     "runtime-main.js": "/ps-pwa/static/js/runtime-main.885a44d4.js",
     "runtime-main.js.map": "/ps-pwa/static/js/runtime-main.885a44d4.js.map",
-    "static/js/2.a97ac467.chunk.js": "/ps-pwa/static/js/2.a97ac467.chunk.js",
-    "static/js/2.a97ac467.chunk.js.map": "/ps-pwa/static/js/2.a97ac467.chunk.js.map",
+    "static/js/2.03be231d.chunk.js": "/ps-pwa/static/js/2.03be231d.chunk.js",
+    "static/js/2.03be231d.chunk.js.map": "/ps-pwa/static/js/2.03be231d.chunk.js.map",
     "static/js/3.19084e58.chunk.js": "/ps-pwa/static/js/3.19084e58.chunk.js",
     "static/js/3.19084e58.chunk.js.map": "/ps-pwa/static/js/3.19084e58.chunk.js.map",
     "index.html": "/ps-pwa/index.html",
     "service-worker.js": "/ps-pwa/service-worker.js",
     "service-worker.js.map": "/ps-pwa/service-worker.js.map",
     "static/css/main.8bdbd7c0.chunk.css.map": "/ps-pwa/static/css/main.8bdbd7c0.chunk.css.map",
-    "static/js/2.a97ac467.chunk.js.LICENSE.txt": "/ps-pwa/static/js/2.a97ac467.chunk.js.LICENSE.txt"
+    "static/js/2.03be231d.chunk.js.LICENSE.txt": "/ps-pwa/static/js/2.03be231d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.885a44d4.js",
-    "static/js/2.a97ac467.chunk.js",
+    "static/js/2.03be231d.chunk.js",
     "static/css/main.8bdbd7c0.chunk.css",
-    "static/js/main.e2b19c70.chunk.js"
+    "static/js/main.b9e4b8a1.chunk.js"
   ]
 }
