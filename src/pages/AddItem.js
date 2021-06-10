@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { makeStyles, List, ListItem } from "@material-ui/core";
 import Input from "../components/Input";
 import SolidButton from "../components/SolidButton";
+import OutlineButton from "../components/OutlineButton";
+import CustomSelect from "../components/CustomSelect";
 import useInputState from "../components/helpers/hooks/useInputState";
+import UploadImgModal from "../components/UploadImgModal";
+import SimpleModal from "../components/UploadImgModal";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddItem({ handleDrawerClose }) {
+export default function AddItem({ handleDrawer }) {
   const classes = useStyles();
   const [item, setItem, resetItem] = useInputState({
     title: "",
@@ -30,54 +34,59 @@ export default function AddItem({ handleDrawerClose }) {
     weather: ""
   });
 
+  const uploadPicture = () => {
+    // open modal
+    console.log("open modal");
+    <SimpleModal openModal={true} />;
+  };
+
   const handleOnClick = (e) => {
     e.preventDefault();
     resetItem();
 
-    handleDrawerClose();
+    handleDrawer();
     console.log(item);
   };
 
   return (
     <form className={classes.container}>
+      <Input text="Title" name="title" value={item.title} fn={setItem} />
       <Input
-        type="text"
-        text="Title"
-        name="title"
-        value={item.title}
-        fn={setItem}
-      />
-      <Input
-        type="text"
         text="Location"
         name="location"
         value={item.location}
         fn={setItem}
       />
       <Input
-        type="text"
         text="Description"
         name="description"
         value={item.description}
         fn={setItem}
       />
-      <Input
-        type="text"
+      <Input text="URL" name="url" value={item.url} fn={setItem} />
+      <CustomSelect
         text="Price"
-        name="price"
         value={item.price}
+        name="price"
         fn={setItem}
+        arr={[" ", "$", "$$", "$$$"]}
       />
-      <Input
-        type="text"
+      <CustomSelect
         text="Indoor/Outdoor"
-        name="indoorOrOutdoor"
         value={item.indoorOrOutdoor}
+        name="indoorOrOutdoor"
         fn={setItem}
+        arr={[" ", "Indoor", "Outdoor"]}
       />
-      <Input type="text" text="Tag" name="tag" value={item.tag} fn={setItem} />
-      <Input type="text" text="URL" name="url" value={item.url} fn={setItem} />
-
+      <CustomSelect
+        text="Weather"
+        value={item.weather}
+        name="weather"
+        fn={setItem}
+        arr={[" ", "Sunny", "Raining", "Cold"]}
+      />
+      <Input text="Tag" name="tag" value={item.tag} fn={setItem} />
+      <OutlineButton text="Add Image" fn={uploadPicture} />
       <SolidButton text="Save" fn={handleOnClick} />
     </form>
   );

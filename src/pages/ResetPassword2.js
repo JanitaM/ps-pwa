@@ -54,13 +54,7 @@ export default function ResetPassword2() {
         value={values.email}
         fn={setValues}
       />
-      <Input
-        type="code"
-        text="Reset Code"
-        name="code"
-        value={values.code}
-        fn={setValues}
-      />
+      <Input text="Reset Code" name="code" value={values.code} fn={setValues} />
       <Input
         type="password"
         text="New Password"

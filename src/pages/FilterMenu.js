@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function FilterMenu({ handleDrawerClose }) {
+export default function FilterMenu({ handleDrawer }) {
   const classes = useStyles();
 
   const handleOnClick = (e) => {
     e.preventDefault();
-    handleDrawerClose();
+    handleDrawer();
   };
 
   return (

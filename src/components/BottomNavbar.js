@@ -47,23 +47,17 @@ export default function BottomNavbar() {
   const [filterBtn, setFilterBtn] = useState(false);
   const isMenuOpen = Boolean(moreAnchorEl);
 
-  const handleDrawerOpen = (text) => {
-    if (text === "Add") setAddBtn(true);
-    if (text === "Edit") setEditBtn(true);
-    if (text === "Filter") setFilterBtn(true);
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setAddBtn(false);
-    setEditBtn(false);
-    setFilterBtn(false);
-    setOpen(false);
+  const handleDrawer = () => {
+    setAddBtn(!addBtn);
+    setEditBtn(!editBtn);
+    setFilterBtn(!filterBtn);
+    setOpen(!open);
   };
 
   const renderCorrectMenu = () => {
-    if (addBtn) return <AddItem handleDrawerClose={handleDrawerClose} />;
-    if (editBtn) return <EditItem handleDrawerClose={handleDrawerClose} />;
-    if (filterBtn) return <FilterMenu handleDrawerClose={handleDrawerClose} />;
+    if (addBtn) return <AddItem handleDrawer={handleDrawer} />;
+    if (editBtn) return <EditItem handleDrawer={handleDrawer} />;
+    if (filterBtn) return <FilterMenu handleDrawer={handleDrawer} />;
   };
 
   const renderMenu = (
@@ -74,7 +68,6 @@ export default function BottomNavbar() {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "center" }}
       open={isMenuOpen}
-      // onClick={handleDrawerClose}
       aria-label="open drawer"
     >
       <Drawer
@@ -84,7 +77,7 @@ export default function BottomNavbar() {
         classes={{
           paper: classes.drawerPaper
         }}
-        onClose={handleDrawerClose}
+        onClose={handleDrawer}
       >
         {renderCorrectMenu()}
       </Drawer>
@@ -99,7 +92,7 @@ export default function BottomNavbar() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={() => handleDrawerOpen("Add")}
+            onClick={() => handleDrawer("Add")}
             edge="end"
             className={clsx(open && classes.hide)}
           >
@@ -108,7 +101,7 @@ export default function BottomNavbar() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={() => handleDrawerOpen("Edit")}
+            onClick={() => handleDrawer("Edit")}
             edge="end"
             className={clsx(open && classes.hide)}
           >
@@ -117,7 +110,7 @@ export default function BottomNavbar() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={() => handleDrawerOpen("Filter")}
+            onClick={() => handleDrawer("Filter")}
             edge="end"
             className={clsx(open && classes.hide)}
           >

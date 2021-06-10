@@ -25,23 +25,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function TopMenu({ signOut }) {
+export default function TopMenu({ handleDrawer }) {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   const handleOnClick = (e) => {
     e.preventDefault();
-
-    signOut();
     // navigate("/");
   };
 
   return (
-    <List onClick={handleDrawerClose}>
+    <List onClick={handleDrawer}>
       <ListItem className={classes.item}>
         <Title fontSize="2rem" />
       </ListItem>

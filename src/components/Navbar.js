@@ -31,14 +31,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 const drawerWidth = "100%";
 
-// function convertImg(binArr) {
-//   let arrayBufferView = new Uint8Array(binArr);
-//   let blob = new Blob([arrayBufferView], { type: "image/*" });
-//   let urlCreator = window.url || window.webkitURL;
-//   let imgUrl = urlCreator.createObjectURL(blob);
-//   return imgUrl;
-// }
-
 function HideOnScroll({ children, window }) {
   const trigger = useScrollTrigger(window);
   return (
@@ -48,37 +40,15 @@ function HideOnScroll({ children, window }) {
   );
 }
 
-export default function Navbar({ props, signedIn, signOut }) {
+export default function Navbar({ props }) {
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   async function getPhotos() {
-  //     if (signedInUser) {
-  //       const token = await signedInUser.signInUserSession.idToken.jwtToken;
-  //       const username = signedInUser.username;
-
-  //       const res = await axios.get(
-  //         `http://localhost:4000/user/profilepic?email=${username}&token=${token}`
-  //       );
-  //       // console.log(res.data.Body.data);
-  //       if (res.data) setProfilePic(convertImg(res.data.Body.data));
-  //       // setProfilePic(res.data.map((item) => convertImg(item.Body.data)));
-  //     }
-  //   }
-  //   getPhotos();
-  // }, []);
-
   const [open, setOpen] = useState(false);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawer = () => {
+    setOpen(!open);
   };
 
-  // const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  // const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const renderMenu = (
@@ -89,7 +59,7 @@ export default function Navbar({ props, signedIn, signOut }) {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
-      onClick={handleDrawerClose}
+      onClick={handleDrawer}
       aria-label="open drawer"
     >
       <Drawer
@@ -99,12 +69,9 @@ export default function Navbar({ props, signedIn, signOut }) {
         classes={{
           paper: classes.drawerPaper
         }}
-        onClose={handleDrawerClose}
+        onClose={handleDrawer}
       >
-        <TopMenu
-          signOut={signOut}
-          // signedInUser={signedInUser}
-        />
+        <TopMenu handleDrawer={handleDrawer} />
       </Drawer>
     </Menu>
   );
@@ -120,7 +87,7 @@ export default function Navbar({ props, signedIn, signOut }) {
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
-                onClick={handleDrawerOpen}
+                onClick={handleDrawer}
                 edge="end"
                 className={clsx(classes.menuButton, open && classes.hide)}
               >

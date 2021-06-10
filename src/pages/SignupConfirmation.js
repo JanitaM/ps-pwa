@@ -54,7 +54,6 @@ export default function SignupConfirmation() {
         We emailed you a confirmation code. Please enter it below.
       </Typography>
       <Input
-        type="text"
         text="Confirmation Code"
         name="code"
         value={code.code}

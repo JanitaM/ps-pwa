@@ -7,9 +7,6 @@ export default function useInputState(initialValue) {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
 
-  // const reset = (resetValue) => {
-  //   setValue(resetValue);
-  // };
   const reset = () => {
     setValue(initialValue);
   };

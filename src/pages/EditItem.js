@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function EditItem({ handleDrawerClose }) {
+export default function EditItem({ handleDrawer }) {
   const classes = useStyles();
 
   const handleOnClick = (e) => {
     e.preventDefault();
-    handleDrawerClose();
+    handleDrawer();
   };
 
   return (

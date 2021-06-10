@@ -40,7 +40,7 @@ const CssTextField = withStyles({
   }
 })(TextField);
 
-export default function Input({ type, text, name, value, fn }) {
+export default function Input({ type = "text", text, name, value, fn }) {
   const classes = useStyles();
 
   return (
@@ -54,7 +54,7 @@ export default function Input({ type, text, name, value, fn }) {
         value={value}
         onChange={fn}
         fullWidth
-        required
+        // required
         focused
         inputProps={{
           "aria-label": `${text}`
